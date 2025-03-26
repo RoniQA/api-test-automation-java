@@ -1,5 +1,6 @@
 package automation.api.test;
 
+import automation.api.domain.User;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
@@ -32,9 +33,10 @@ public class UserTest {
 
     @Test
     public void testUserCreationWithSuccess() {
+        User user = new User("Roni", "QA");
         given().
             contentType(ContentType.JSON).
-            body("{\"name\": \"Roni\", \"job\": \"QA\"}").
+            body(user).
         when().
             post("/users").
         then().
