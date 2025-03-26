@@ -1,15 +1,21 @@
 package automation.api;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
+
+    @BeforeAll
+    public static void setup() {
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+    }
 
     @Test
     public void testUserListData() {
@@ -23,7 +29,7 @@ public class AppTest {
 
     @Test
     public void testUserCreationWithSuccess() {
-        given().log().all().
+        given().
             contentType(ContentType.JSON).
             body("{\"name\": \"Roni\", \"job\": \"QA\"}").
         when().
