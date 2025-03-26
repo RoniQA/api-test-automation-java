@@ -1,23 +1,15 @@
 package automation.api.test;
 
 import automation.api.domain.User;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static io.restassured.RestAssured.*;
+
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 
-public class UserTest {
-
-    @BeforeAll
-    public static void setup() {
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        baseURI = "https://reqres.in";
-        basePath = "/api";
-    }
+public class UserTest extends BaseTest {
 
     @Test
     public void testUserListData() {
