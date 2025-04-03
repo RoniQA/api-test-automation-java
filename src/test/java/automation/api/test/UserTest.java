@@ -2,6 +2,7 @@ package automation.api.test;
 
 import automation.api.domain.User;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -15,6 +16,7 @@ public class UserTest extends BaseTest {
 
 
     @Test
+    @DisplayName("Scnerario: User creation")
     public void testUserListData() {
         given().
             params("page", "2").
